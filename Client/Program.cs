@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using VagnersStore.Client.Services.CategoryService;
 using VagnersStore.Client.Services.ProductService;
 
 namespace VagnersStore.Client
@@ -19,7 +20,8 @@ namespace VagnersStore.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddScoped<IProductService, ProductService>(); 
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
 
             await builder.Build().RunAsync();
         }
