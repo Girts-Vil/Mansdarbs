@@ -31,6 +31,15 @@ namespace VagnersStore.Client.Services.ProductService
                     Price= 8888889m,
                     OriginalPrice= 245842999999m,
                 },
+                new Product{
+                    Id= 3,
+                    CategoryId= 2,
+                    Title ="Rang rover",
+                    Description= "wpfff cdi utt",
+                    Image="https://en.wikipedia.org/wiki/File:BMW_G20_IMG_0167.jpg",
+                    Price= 8888889m,
+                    OriginalPrice= 245842999999m,
+                },
             };
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Vagnersstore.Shared;
 
@@ -8,15 +10,18 @@ namespace VagnersStore.Client.Services.CategoryService
 {
     public class CategoryService : ICategoryService
     {
+        private readonly HttpClient _http;
+
         public List<Category> Categories { get; set; } = new List<Category>();
 
-        public void LoadCategories()
+        public CategoryService(HttpClient http)
         {
-            Categories = new List<Category>{
-                new Category { Id=1, Name="German cars", Url="german cars", Icon="car"},
-                new Category { Id=2, Name="England cars", Url="england cars", Icon="car"},
-                new Category { Id=3, Name="American cars", Url="american cars", Icon="car"},
-            };
+            _http = http;
+        }
+
+        public async Task LoadCategories()
+        {
+            Categories = await _http.GetFromJsonAsync<List<Category>>("api/Category");
 
         }
     }
