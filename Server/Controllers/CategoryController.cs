@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vagnersstore.Shared;
+using VagnersStore.Server.Services.CategoryService;
 
 namespace VagnersStore.Server.Controllers
 {
@@ -12,14 +13,17 @@ namespace VagnersStore.Server.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        private readonly ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
         [HttpGet]
         public async Task<ActionResult<List<Category>>> GetCategories()
         {
-            return Ok(new List<Category>{
-                new Category { Id=1, Name="German made cars", Url="german cars", Icon="book"},
-                new Category { Id=2, Name="Britain made cars", Url="england cars", Icon="car"},
-                new Category { Id=3, Name="American made cars", Url="american cars", Icon="car"},
-            });
+            return Ok(await _categoryService.GetCategories());
         }
     }
 }
