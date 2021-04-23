@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vagnersstore.Shared;
+using VagnersStore.Server.Services.CategoryService;
 
 namespace VagnersStore.Server.Services.ProductService
 {
     public class ProductService : IProductService
     {
+        private readonly ICategoryService _categoryService;
+
+        public ProductService(ICategoryService categoryService)
+        {
+            _categoryService = categoryService;
+        }
+
         public async Task<List<Product>> GetAllProducts()
         {
             return Products;
@@ -18,9 +26,11 @@ namespace VagnersStore.Server.Services.ProductService
             throw new NotImplementedException();
         }
 
+
         public async Task<List<Product>> GetProductsByCategory(string categoryUrl)
         {
-            throw new NotImplementedException();
+            Category category = await _categoryService.GetCategoryByUrl(categoryUrl);
+            return Products.Where(p => p.CategoryId == category.Id).ToList();
         }
 
         public List<Product> Products { get; set; } = new List<Product>{

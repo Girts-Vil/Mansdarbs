@@ -18,5 +18,10 @@ namespace VagnersStore.Server.Services.CategoryService
         {
             return Categories;
         }
+
+        public async Task<Category> GetCategoryByUrl(string categoryUrl)
+        {
+            return Categories.FirstOrDefault(c => c.Url.ToLower().Equals(categoryUrl.ToLower()));
+        }
     }
 }

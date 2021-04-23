@@ -8,7 +8,8 @@ namespace VagnersStore.Client.Services.ProductService
 {
     interface IProductService
     {
+        event Action OnChange;
         List<Product> Products { get; set; }
-        Task LoadProducts();
+        Task LoadProducts(string categoryUrl= null);
     }
 }
