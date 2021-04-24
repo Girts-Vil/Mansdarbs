@@ -23,7 +23,8 @@ namespace VagnersStore.Server.Services.ProductService
 
         public async Task<Product> GetProduct(int id)
         {
-            throw new NotImplementedException();
+            Product product = Products.FirstOrDefault(p => p.Id == id);
+            return product;
         }
 
 

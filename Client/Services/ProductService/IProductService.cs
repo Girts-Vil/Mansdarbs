@@ -11,5 +11,6 @@ namespace VagnersStore.Client.Services.ProductService
         event Action OnChange;
         List<Product> Products { get; set; }
         Task LoadProducts(string categoryUrl= null);
+        Task<Product> GetProduct(int id);
     }
 }
