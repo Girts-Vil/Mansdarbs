@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VagnersStore.Server.Data;
 
 namespace VagnersStore.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210427084927_Editions")]
+    partial class Editions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,38 +34,6 @@ namespace VagnersStore.Server.Migrations
                     b.HasIndex("ProductsId");
 
                     b.ToTable("EditionProduct");
-
-                    b.HasData(
-                        new
-                        {
-                            EditionsId = 1,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 2,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 1,
-                            ProductsId = 2
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 2
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 3
-                        });
                 });
 
             modelBuilder.Entity("VagnersStore.Shared.Edition", b =>
@@ -79,23 +49,6 @@ namespace VagnersStore.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Editions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Ar garantiju"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ar garantijas plus"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Bez garantijas"
-                        });
                 });
 
             modelBuilder.Entity("Vagnersstore.Shared.Category", b =>

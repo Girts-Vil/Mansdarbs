@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VagnersStore.Shared;
 
 namespace Vagnersstore.Shared
 {
@@ -21,7 +22,8 @@ namespace Vagnersstore.Shared
         public bool IsDeleted { get; set; }
         public Category Category { get; set; }
         public int CategoryId { get; set; }
-        public DateTime DateCreated { get; set; } = DateTime.Now;
-        public DateTime DateUpdated { get; set; }
+        public List<Edition> Editions { get; set; }
+        public DateTime? DateCreated { get; set; } = DateTime.Now;
+        public DateTime? DateUpdated { get; set; }
     }
 }

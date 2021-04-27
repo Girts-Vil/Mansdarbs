@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Vagnersstore.Shared;
+using VagnersStore.Shared;
 
 namespace VagnersStore.Server.Data
 {
@@ -16,6 +17,7 @@ namespace VagnersStore.Server.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Edition> Editions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +37,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2006-Mercedes-Benz-CLS55-AMG-2.jpg/320px-2006-Mercedes-Benz-CLS55-AMG-2.jpg",
                    Price = 25.000m,
                    OriginalPrice = 23.750m,
+                   DateCreated= new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -45,6 +48,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/8/8d/BMW_G20_IMG_0167.jpg",
                    Price = 35.000m,
                    OriginalPrice = 32.000m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -55,6 +59,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/6/6a/Audi_e-tron_Sportback_Genf_2019_1Y7A5437.jpg",
                    Price = 50.000m,
                    OriginalPrice = 49.750m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -65,6 +70,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/8/8d/Range_Rover_Sport_SVR%2C_IAA_2017%2C_Frankfurt_%281Y7A3071%29.jpg",
                    Price = 70.000m,
                    OriginalPrice = 69.500m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -75,6 +81,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/6/64/Jaguar_F-Type_R%2C_TWB_18%2C_Friedrichshafen_%28OW1A0263%29.jpg",
                    Price = 55.000m,
                    OriginalPrice = 53.000m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -85,6 +92,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/a/aa/Rolls-Royce_Phantom%2C_Geneva_International_Motor_Show_2018%2C_Le_Grand-Saconnex_%281X7A1220%29.jpg",
                    Price = 402.000m,
                    OriginalPrice = 400.000m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -95,6 +103,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/7/79/Dodge_Challenger_SRT_Hellcat_2015-20180909-RM-171851.jpg",
                    Price = 73.000m,
                    OriginalPrice = 72.500m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -105,6 +114,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/f/f6/Chevrolet_Camaro_RS_%285th_gen%29%2C_2015_model%2C_Wien_26_July_2020_JM_%284%29.jpg",
                    Price = 53.000m,
                    OriginalPrice = 51.000m,
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -115,8 +125,25 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/f/f3/Ford_Mustang_VI_Bullit%2C_GIMS_2018%2C_Le_Grand-Saconnex_%281X7A1282%29.jpg",
                    Price = 45.000m,
                    OriginalPrice = 44.750m,
+                   DateCreated = new DateTime(2021, 4, 27)
                }
             );
+
+            modelBuilder.Entity<Edition>().HasData(
+                    new Edition {Id = 1, Name ="Ar garantiju" },
+                    new Edition {Id = 2, Name ="Ar garantijas plus" },
+                    new Edition {Id = 3, Name ="Bez garantijas" }
+                );
+
+            modelBuilder.SharedTypeEntity<Dictionary<string, object>>("EditionProduct")
+                .HasData(
+                    new { EditionsId = 1, ProductsId = 1 },
+                    new { EditionsId = 2, ProductsId = 1 },
+                    new { EditionsId = 3, ProductsId = 1 },
+                    new { EditionsId = 1, ProductsId = 2 },
+                    new { EditionsId = 3, ProductsId = 2 },
+                    new { EditionsId = 3, ProductsId = 3 }
+                );
         }
     }
 }

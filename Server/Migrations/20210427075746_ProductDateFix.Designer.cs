@@ -3,100 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VagnersStore.Server.Data;
 
 namespace VagnersStore.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210427075746_ProductDateFix")]
+    partial class ProductDateFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("EditionProduct", b =>
-                {
-                    b.Property<int>("EditionsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EditionsId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("EditionProduct");
-
-                    b.HasData(
-                        new
-                        {
-                            EditionsId = 1,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 2,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 1
-                        },
-                        new
-                        {
-                            EditionsId = 1,
-                            ProductsId = 2
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 2
-                        },
-                        new
-                        {
-                            EditionsId = 3,
-                            ProductsId = 3
-                        });
-                });
-
-            modelBuilder.Entity("VagnersStore.Shared.Edition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Editions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Ar garantiju"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Ar garantijas plus"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Bez garantijas"
-                        });
-                });
 
             modelBuilder.Entity("Vagnersstore.Shared.Category", b =>
                 {
@@ -303,21 +226,6 @@ namespace VagnersStore.Server.Migrations
                             Price = 45.000m,
                             Title = "Ford Mustang"
                         });
-                });
-
-            modelBuilder.Entity("EditionProduct", b =>
-                {
-                    b.HasOne("VagnersStore.Shared.Edition", null)
-                        .WithMany()
-                        .HasForeignKey("EditionsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Vagnersstore.Shared.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Vagnersstore.Shared.Product", b =>
