@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Vagnersstore.Shared;
+using VagnersStore.Shared;
 using VagnersStore.Server.Data;
 
 namespace VagnersStore.Server.Services.CategoryService

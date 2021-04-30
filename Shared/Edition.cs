@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Vagnersstore.Shared;
+using VagnersStore.Shared;
 
 namespace VagnersStore.Shared
 {
@@ -12,7 +12,6 @@ namespace VagnersStore.Shared
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        [JsonIgnore]
-        public List<Product> Products { get; set; }
+        
     }
 }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VagnersStore.Shared;
 
-namespace Vagnersstore.Shared
+namespace VagnersStore.Shared
 {
     public class Category
     {
