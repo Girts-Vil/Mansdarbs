@@ -4,26 +4,23 @@
 
 <div class="media">
     <div class="media-img-big-wrapper mr-2">
-        <img class="media-img-big" src="@product.Image" alt="@product.Title"  />
+        <img class="media-img-big" src="@product.Image" alt="@product.Title" />
     </div>
     <div class="media-body">
         <h2 class="mb-0">@product.Title</h2>
         <p>@product.Description</p>
-        @if (product.Editions != null && product.Editions.Count > 0 )
-            {
-                <div class="form-group">
-                    <select class="form-control">
-                        @foreach(var edition in product.Editions)
-                        {
-                            <option>@edition.Name</option>
-                        }
-                    </select>
-                </div>
-            }
-        @if(product.OriginalPrice > product.Price)
-            {
-                <h6 class="text-muted original-price">€@product.OriginalPrice</h6>
-            }
+        @if (product.Editions != null && product.Editions.Count > 0)
+        {
+<div class="form-group">
+    <select class="form-control">
+        @foreach (var edition in product.Editions)
+        {
+<option>@edition.Name</option>}
+    </select>
+</div>            }
+        @if (product.OriginalPrice > product.Price)
+        {
+<h6 class="text-muted original-price">€@product.OriginalPrice</h6>            }
         <h4 class="price">
             €@product.Price
         </h4>
@@ -31,15 +28,14 @@
     </div>
 </div>
 
-@code {
-    private Product product = new Product();
+@code { private Product product = new Product();
 
 
-    [Parameter]
-    public int Id { get; set; }
+            [Parameter]
+            public int Id { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        product = await ProductService.GetProduct(Id);
-    }
-}
+            protected override async Task OnInitializedAsync()
+            {
+                product = await ProductService.GetProduct(Id);
+            } }
+

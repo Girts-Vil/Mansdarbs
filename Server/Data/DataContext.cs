@@ -37,7 +37,7 @@ namespace VagnersStore.Server.Data
                    Image = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2006-Mercedes-Benz-CLS55-AMG-2.jpg/320px-2006-Mercedes-Benz-CLS55-AMG-2.jpg",
                    Price = 25.000m,
                    OriginalPrice = 23.750m,
-                   DateCreated= new DateTime(2021, 4, 27)
+                   DateCreated = new DateTime(2021, 4, 27)
                },
                new Product
                {
@@ -130,9 +130,9 @@ namespace VagnersStore.Server.Data
             );
 
             modelBuilder.Entity<Edition>().HasData(
-                    new Edition {Id = 1, Name ="Ar garantiju" },
-                    new Edition {Id = 2, Name ="Ar garantijas plus" },
-                    new Edition {Id = 3, Name ="Bez garantijas" }
+                    new Edition { Id = 1, Name = "Ar garantiju" },
+                    new Edition { Id = 2, Name = "Ar garantijas plus" },
+                    new Edition { Id = 3, Name = "Bez garantijas" }
                 );
 
             modelBuilder.SharedTypeEntity<Dictionary<string, object>>("EditionProduct")
