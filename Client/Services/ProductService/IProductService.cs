@@ -6,7 +6,7 @@ using VagnersStore.Shared;
 
 namespace VagnersStore.Client.Services.ProductService
 {
-    interface IProductService
+    public interface IProductService
     {
         event Action OnChange;
         List<Product> Products { get; set; }

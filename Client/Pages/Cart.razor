@@ -1,0 +1,13 @@
+﻿@page "/cart"
+@inject ICartService CartService
+
+<h3>Shopping Cart</h3>
+
+@if(cartItems == null || cartItems.Count <= 0)
+ {
+    <span> Jums nav nekādu priekšmetu grozā.</span>
+ }
+
+@code {
+    List<CartItem> cartItems = new List<CartItem>();
+}
