@@ -25,7 +25,7 @@ namespace VagnersStore.Server.Data
 
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "German made cars", Url = "german cars", Icon = "book" },
-                new Category { Id = 2, Name = "Britain made cars", Url = "england cars", Icon = "book" },
+                new Category { Id = 2, Name = "England made cars", Url = "england cars", Icon = "book" },
                 new Category { Id = 3, Name = "American made cars", Url = "american cars", Icon = "book" }
             );
 
